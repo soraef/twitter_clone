@@ -1,0 +1,4 @@
+enum UserProfileStatus {
+  inProgress,
+  done,
+}
