@@ -1,4 +1,0 @@
-enum UserProfileStatus {
-  inProgress,
-  done,
-}

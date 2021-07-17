@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/store/tweet/src/model/tweet.dart';
+import 'package:twitter_clone/application/tweet/src/model/tweet.dart';
 
 import 'model/tweets.dart';
 
