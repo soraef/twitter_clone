@@ -1,16 +1,16 @@
 # twitter_clone
+Flutter/Firebaseで作成中のツイッターライクなアプリケーションです。
 
-A new Flutter project.
+## アプリの機能
+### 認証系
+認証にはFirebase Authのemail&password認証を使用しています。
+本アプリでは認証の状態は未認証・アカウント未情報設定・認証完了の３状態があり、それぞれログイン画面・プロフィール設定画面・ホーム画面にルーティングされるようになっています。
 
-## Getting Started
+![画面](doc/twitter_clone.png)
 
-This project is a starting point for a Flutter application.
+### タイムラインとツイート
+本アプリにはフォロー機能がないため, タイムラインにはすべてのユーザーのすべての投稿が閲覧可能になっています。
+FloatingActionButtonを押下すると、ツイート編集用のモーダルが表示され、ツイートできます。
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 制作期間
+最低限の認証とツイート機能は２日間かけて12時間ぐらいで作成しました。
