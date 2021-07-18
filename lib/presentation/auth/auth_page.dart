@@ -49,67 +49,67 @@ class _AuthPageState extends State<AuthPage> {
         );
 
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Spacer(),
-                  Container(
-                    width: 200,
-                    height: 150,
-                    child: Image.asset(
-                      "images/twitter_top.png",
-                    ),
-                  ),
-                  Spacer(),
-                  if (state.isFailed)
-                    Text(
-                      state.errorMessage,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.red,
+              child: SingleChildScrollView(
+                reverse: true,
+                child: Column(
+                  // mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Spacer(),
+                    Container(
+                      width: 200,
+                      height: 150,
+                      child: Image.asset(
+                        "images/twitter_top.png",
                       ),
                     ),
-                  Flexible(
-                    child: TextField(
+                    // Spacer(),
+                    if (state.isFailed)
+                      Text(
+                        state.errorMessage,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.red,
+                        ),
+                      ),
+                    TextField(
                       controller: _emailController,
                       decoration: InputDecoration(hintText: "E-mail"),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(bottom: 8)),
-                  Flexible(
-                    child: TextField(
+                    Padding(padding: EdgeInsets.only(bottom: 8)),
+                    TextField(
                       controller: _passwordController,
                       decoration: InputDecoration(hintText: "Password"),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(bottom: 8)),
-                  ElevatedButton(
-                    child: state.map(
-                      signIn: (_) => Text("Sign In"),
-                      signUp: (_) => Text("Sign Up"),
-                    ),
-                    onPressed: () {
-                      final email = _emailController.text;
-                      final password = _passwordController.text;
+                    Padding(padding: EdgeInsets.only(bottom: 8)),
+                    ElevatedButton(
+                      child: state.map(
+                        signIn: (_) => Text("Sign In"),
+                        signUp: (_) => Text("Sign Up"),
+                      ),
+                      onPressed: () {
+                        final email = _emailController.text;
+                        final password = _passwordController.text;
 
-                      state.when(
-                        signIn: (_, __) => controller.signIn(email, password),
-                        signUp: (_, __) => controller.signUp(email, password),
-                      );
-                    },
-                  ),
-                  Spacer(),
-                  TextButton(
-                    onPressed: () => controller.togglePage(),
-                    child: state.map(
-                      signIn: (_) => Text("未登録の方はこちら"),
-                      signUp: (_) => Text("アカウントをお持ちの方はこちら"),
+                        state.when(
+                          signIn: (_, __) => controller.signIn(email, password),
+                          signUp: (_, __) => controller.signUp(email, password),
+                        );
+                      },
                     ),
-                  )
-                ],
+                    // Spacer(),
+                    TextButton(
+                      onPressed: () => controller.togglePage(),
+                      child: state.map(
+                        signIn: (_) => Text("未登録の方はこちら"),
+                        signUp: (_) => Text("アカウントをお持ちの方はこちら"),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

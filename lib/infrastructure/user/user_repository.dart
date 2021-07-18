@@ -8,10 +8,8 @@ final userRepositoryProvider = Provider(
 
 class UserRepository {
   Future<User?> fetch(String id) async {
-    print(id);
     final data =
         await FirebaseFirestore.instance.collection("account").doc(id).get();
-    print(data);
     if (!data.exists) {
       return null;
     }
