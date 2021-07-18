@@ -17,6 +17,23 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
 
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAzNVkHdqdsJQ8YkgZE21bKUSqlXLXWxHw",
+      authDomain: "flutter-twitter-clone-app.firebaseapp.com",
+      projectId: "flutter-twitter-clone-app",
+      storageBucket: "flutter-twitter-clone-app.appspot.com",
+      messagingSenderId: "815480471211",
+      appId: "1:815480471211:web:97d231f2ae661cd02a41ee",
+      measurementId: "G-KMDQ5KEM4P"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
