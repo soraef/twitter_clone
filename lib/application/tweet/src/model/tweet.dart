@@ -1,6 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:twitter_clone/application/core/json/timestamp/timestamp.dart';
+import 'package:uuid/uuid.dart';
 
 part 'tweet.freezed.dart';
+part 'tweet.g.dart';
 
 @freezed
 class Tweet with _$Tweet {
@@ -13,6 +16,11 @@ class Tweet with _$Tweet {
     required String? paretnTweetId,
     required Set<String> likedUserIds,
     required Set<String> reTweetUserIds,
+    @JsonKey(
+      fromJson: dateFromTimestampValue,
+      toJson: timestampFromDateValue,
+    )
+        required DateTime createdAt,
   }) = _Tweet;
 
   factory Tweet.reply(
@@ -28,21 +36,24 @@ class Tweet with _$Tweet {
       paretnTweetId: replyTweetId,
       likedUserIds: {},
       reTweetUserIds: {},
+      createdAt: DateTime.now(),
     );
   }
 
+  factory Tweet.fromJson(Map<String, dynamic> json) => _$TweetFromJson(json);
+
   factory Tweet.create(
-    String id,
     String userId,
     String text,
   ) {
     return Tweet(
-      id: id,
+      id: Uuid().v4(),
       userId: userId,
       text: text,
       paretnTweetId: null,
       likedUserIds: {},
       reTweetUserIds: {},
+      createdAt: DateTime.now(),
     );
   }
 

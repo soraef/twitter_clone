@@ -29,6 +29,13 @@ class Tweets extends Equatable {
     return Tweets({..._items, item.id: item});
   }
 
+  Tweets putAll(List<Tweet> items) {
+    return Tweets({
+      ..._items,
+      for (final item in items) item.id: item,
+    });
+  }
+
   Tweets remove(String id) {
     return Tweets({..._items}..removeWhere((key, value) => key == id));
   }
