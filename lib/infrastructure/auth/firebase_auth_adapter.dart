@@ -63,7 +63,6 @@ class FirebaseAuthAdapter {
       return Result.success(credential.user!.uid);
     } on FirebaseAuthException catch (e) {
       late AppException exception;
-      print(e.code);
 
       switch (e.code) {
         case "invalid-email":

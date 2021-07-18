@@ -48,7 +48,6 @@ class _HomePageState extends ConsumerState<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.edit),
         onPressed: () {
-          print("show");
           showMaterialModalBottomSheet(
             context: context,
             expand: true,

@@ -5,6 +5,5 @@ void main() {
   test("user repository test", () {
     final t = Tweet.create("hoge", "sss");
     final hoge = t.toJson()["createdAt"];
-    print(hoge.runtimeType);
   });
 }

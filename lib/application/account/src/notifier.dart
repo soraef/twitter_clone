@@ -48,11 +48,9 @@ class AccountNotifier extends ChangeNotifier {
   }
 
   Future<void> loadAccount() async {
-    print("load");
     final userAuth = _userAuth();
     if (userAuth.isSignIn) {
       account = await _repository.fetch(userAuth.uid!);
-      print(account);
       notifyListeners();
     }
   }

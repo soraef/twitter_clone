@@ -8,7 +8,6 @@ class AccountRepository {
   Future<Account?> fetch(String id) async {
     final data =
         await FirebaseFirestore.instance.collection("account").doc(id).get();
-    print(data);
 
     if (data.exists) {
       final accountData = data.data();

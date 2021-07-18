@@ -53,7 +53,6 @@ class FirstLoadingController extends ChangeNotifier {
     } else {
       state = FirstLoadingState.noSignIn;
     }
-    print(state);
     notifyListeners();
   }
 }

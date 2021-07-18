@@ -23,9 +23,6 @@ final loadedTweetProvider = Provider<List<TimeLineItemState>>((ref) {
   final users = ref.watch(userNotifierProvider).users;
   final tweets = ref.watch(tweetNotifierProvider).tweets;
 
-  print(tweets.length);
-  print(users.length);
-
   return tweets.values
       .where((tweet) => users.exist(tweet.userId))
       .map(

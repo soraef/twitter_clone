@@ -17,9 +17,7 @@ final userNotifierProvider = ChangeNotifierProvider(
 class UserNotifier extends ChangeNotifier {
   UserNotifier(this._read) {
     eventSubscription = _bus.on<TweetAdded>().listen((event) {
-      print("tweet added evet");
       if (!users.exist(event.tweet.id)) {
-        print("load user");
         loadUser(event.tweet.userId);
       }
     });
@@ -37,7 +35,6 @@ class UserNotifier extends ChangeNotifier {
 
   Future<void> loadUser(String id) async {
     final user = await _repository.fetch(id);
-    print(user);
     if (user != null) {
       users = users.put(user);
       userAddedStreamController.sink.add(id);
