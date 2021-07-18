@@ -14,3 +14,7 @@ FloatingActionButtonを押下すると、ツイート編集用のモーダルが
 
 ## 制作期間
 最低限の認証とツイート機能は２日間かけて12時間ぐらいで作成しました。
+
+## Demo
+[こちら](https://flutter-twitter-clone-app.web.app)にFlutter webを使ってデモサイトをホストしました。
+開発はiOSのエミュレータを使って行ったのですが、Webでもしっかり動いて少し感動。
