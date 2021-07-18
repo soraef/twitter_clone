@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/tweet/src/notifier.dart';
 import 'package:twitter_clone/presentation/tweet/tweet_page_controller.dart';
 
 class TweetPage extends ConsumerStatefulWidget {

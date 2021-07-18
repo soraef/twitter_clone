@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/account/src/notifier.dart';
+import 'package:twitter_clone/application/account/account.dart';
 
 final accountRegistControllerProvider = ChangeNotifierProvider(
   (ref) => AccountRegistController(ref.read),

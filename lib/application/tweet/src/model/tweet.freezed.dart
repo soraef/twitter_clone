@@ -24,18 +24,12 @@ class _$TweetTearOff {
       {required String id,
       required String userId,
       required String text,
-      required String? paretnTweetId,
-      required Set<String> likedUserIds,
-      required Set<String> reTweetUserIds,
       @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
           required DateTime createdAt}) {
     return _Tweet(
       id: id,
       userId: userId,
       text: text,
-      paretnTweetId: paretnTweetId,
-      likedUserIds: likedUserIds,
-      reTweetUserIds: reTweetUserIds,
       createdAt: createdAt,
     );
   }
@@ -53,9 +47,6 @@ mixin _$Tweet {
   String get id => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
-  String? get paretnTweetId => throw _privateConstructorUsedError;
-  Set<String> get likedUserIds => throw _privateConstructorUsedError;
-  Set<String> get reTweetUserIds => throw _privateConstructorUsedError;
   @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
   DateTime get createdAt => throw _privateConstructorUsedError;
 
@@ -72,9 +63,6 @@ abstract class $TweetCopyWith<$Res> {
       {String id,
       String userId,
       String text,
-      String? paretnTweetId,
-      Set<String> likedUserIds,
-      Set<String> reTweetUserIds,
       @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
           DateTime createdAt});
 }
@@ -92,9 +80,6 @@ class _$TweetCopyWithImpl<$Res> implements $TweetCopyWith<$Res> {
     Object? id = freezed,
     Object? userId = freezed,
     Object? text = freezed,
-    Object? paretnTweetId = freezed,
-    Object? likedUserIds = freezed,
-    Object? reTweetUserIds = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -110,18 +95,6 @@ class _$TweetCopyWithImpl<$Res> implements $TweetCopyWith<$Res> {
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      paretnTweetId: paretnTweetId == freezed
-          ? _value.paretnTweetId
-          : paretnTweetId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      likedUserIds: likedUserIds == freezed
-          ? _value.likedUserIds
-          : likedUserIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      reTweetUserIds: reTweetUserIds == freezed
-          ? _value.reTweetUserIds
-          : reTweetUserIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -139,9 +112,6 @@ abstract class _$TweetCopyWith<$Res> implements $TweetCopyWith<$Res> {
       {String id,
       String userId,
       String text,
-      String? paretnTweetId,
-      Set<String> likedUserIds,
-      Set<String> reTweetUserIds,
       @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
           DateTime createdAt});
 }
@@ -160,9 +130,6 @@ class __$TweetCopyWithImpl<$Res> extends _$TweetCopyWithImpl<$Res>
     Object? id = freezed,
     Object? userId = freezed,
     Object? text = freezed,
-    Object? paretnTweetId = freezed,
-    Object? likedUserIds = freezed,
-    Object? reTweetUserIds = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_Tweet(
@@ -178,18 +145,6 @@ class __$TweetCopyWithImpl<$Res> extends _$TweetCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      paretnTweetId: paretnTweetId == freezed
-          ? _value.paretnTweetId
-          : paretnTweetId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      likedUserIds: likedUserIds == freezed
-          ? _value.likedUserIds
-          : likedUserIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      reTweetUserIds: reTweetUserIds == freezed
-          ? _value.reTweetUserIds
-          : reTweetUserIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -205,9 +160,6 @@ class _$_Tweet extends _Tweet {
       {required this.id,
       required this.userId,
       required this.text,
-      required this.paretnTweetId,
-      required this.likedUserIds,
-      required this.reTweetUserIds,
       @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
           required this.createdAt})
       : super._();
@@ -222,18 +174,12 @@ class _$_Tweet extends _Tweet {
   @override
   final String text;
   @override
-  final String? paretnTweetId;
-  @override
-  final Set<String> likedUserIds;
-  @override
-  final Set<String> reTweetUserIds;
-  @override
   @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Tweet(id: $id, userId: $userId, text: $text, paretnTweetId: $paretnTweetId, likedUserIds: $likedUserIds, reTweetUserIds: $reTweetUserIds, createdAt: $createdAt)';
+    return 'Tweet(id: $id, userId: $userId, text: $text, createdAt: $createdAt)';
   }
 
   @override
@@ -246,15 +192,6 @@ class _$_Tweet extends _Tweet {
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.text, text) ||
                 const DeepCollectionEquality().equals(other.text, text)) &&
-            (identical(other.paretnTweetId, paretnTweetId) ||
-                const DeepCollectionEquality()
-                    .equals(other.paretnTweetId, paretnTweetId)) &&
-            (identical(other.likedUserIds, likedUserIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.likedUserIds, likedUserIds)) &&
-            (identical(other.reTweetUserIds, reTweetUserIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.reTweetUserIds, reTweetUserIds)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)));
@@ -266,9 +203,6 @@ class _$_Tweet extends _Tweet {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(text) ^
-      const DeepCollectionEquality().hash(paretnTweetId) ^
-      const DeepCollectionEquality().hash(likedUserIds) ^
-      const DeepCollectionEquality().hash(reTweetUserIds) ^
       const DeepCollectionEquality().hash(createdAt);
 
   @JsonKey(ignore: true)
@@ -287,9 +221,6 @@ abstract class _Tweet extends Tweet {
       {required String id,
       required String userId,
       required String text,
-      required String? paretnTweetId,
-      required Set<String> likedUserIds,
-      required Set<String> reTweetUserIds,
       @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
           required DateTime createdAt}) = _$_Tweet;
   const _Tweet._() : super._();
@@ -302,12 +233,6 @@ abstract class _Tweet extends Tweet {
   String get userId => throw _privateConstructorUsedError;
   @override
   String get text => throw _privateConstructorUsedError;
-  @override
-  String? get paretnTweetId => throw _privateConstructorUsedError;
-  @override
-  Set<String> get likedUserIds => throw _privateConstructorUsedError;
-  @override
-  Set<String> get reTweetUserIds => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: dateFromTimestampValue, toJson: timestampFromDateValue)
   DateTime get createdAt => throw _privateConstructorUsedError;

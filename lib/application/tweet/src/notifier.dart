@@ -23,7 +23,6 @@ class TweetNotifier extends ChangeNotifier {
 
   final Reader _read;
 
-  AuthNotifier get _authNotifier => _read(authNotifierProvider);
   TweetRepository get _repository => _read(tweetRepositoryProvider);
   EventBus get _bus => _read(eventBusProvider);
 
@@ -40,43 +39,11 @@ class TweetNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void like(String tweetId, String userId) {
-    final target = tweets.findById(tweetId);
-
-    if (target == null) {
-      throw "tweetが存在しません";
-    }
-
-    tweets = tweets.put(target.like(userId));
-    notifyListeners();
-  }
-
-  void retweet(String tweetId, String userId) {
-    final target = tweets.findById(tweetId);
-
-    if (target == null) {
-      throw "tweetが存在しません";
-    }
-
-    tweets = tweets.put(target.retweet(userId));
-    notifyListeners();
-  }
-
-  void reply(String replyTweetId, String userId, String text) {
-    final replyTweet = Tweet.reply("test", userId, text, replyTweetId);
-    tweets = tweets.put(replyTweet);
-    notifyListeners();
-  }
-
   Future<void> tweet(String userId, String text) async {
     final tweet = Tweet.create(userId, text);
     await _repository.save(tweet);
     tweets = tweets.put(tweet);
     _bus.fire(TweetAdded(tweet));
     notifyListeners();
-  }
-
-  UserAuth _user() {
-    return _authNotifier.userAuth;
   }
 }

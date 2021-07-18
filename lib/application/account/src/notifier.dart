@@ -10,6 +10,9 @@ final accountNotifierProvider = ChangeNotifierProvider<AccountNotifier>(
   (ref) => AccountNotifier(ref.read),
 );
 
+/// [Account]は自分自身のUserを表すクラスで、プライベートな情報などもAccountに持ちます
+/// 今回は特に[User]クラスとの違いはないですが、後々非公開にしたい情報などを入力することを想定して
+/// [Account]を[User]と区別しています
 class AccountNotifier extends ChangeNotifier {
   AccountNotifier(this._read) {
     account = null;

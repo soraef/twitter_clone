@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/application/auth/auth.dart';
-import 'package:twitter_clone/presentation/account/account_regist_page.dart';
 import 'package:twitter_clone/presentation/account/account_switch.dart';
 import 'package:twitter_clone/presentation/auth/auth_page_controller.dart';
 
