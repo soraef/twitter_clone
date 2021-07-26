@@ -9,12 +9,12 @@ import 'package:twitter_clone/infrastructure/user/user_repository.dart';
 
 import 'model/users.dart';
 
-final userNotifierProvider = ChangeNotifierProvider(
-  (ref) => UserNotifier(ref.read),
+final userDispatcherProvider = ChangeNotifierProvider(
+  (ref) => UserDispatcher(ref.read),
 );
 
-class UserNotifier extends ChangeNotifier {
-  UserNotifier(this._read) {
+class UserDispatcher extends ChangeNotifier {
+  UserDispatcher(this._read) {
     eventSubscription = _bus.on<TweetAdded>().listen((event) {
       if (!users.exist(event.tweet.id)) {
         loadUser(event.tweet.userId);

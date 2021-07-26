@@ -16,7 +16,7 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
-    ref.read(tweetNotifierProvider).load();
+    ref.read(tweetDispatcherProvider).load();
     super.initState();
   }
 
@@ -39,7 +39,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ListTile(
               title: Text("サインアウト"),
               onTap: () {
-                ref.read(authNotifierProvider).signOut();
+                ref.read(authDispatcherProvider).signOut();
               },
             )
           ],

@@ -17,7 +17,7 @@ class AccountRegistController extends ChangeNotifier {
 
   final Reader _read;
 
-  AccountNotifier get _notifier => _read(accountNotifierProvider);
+  AccountDispatcher get _notifier => _read(accountDispatcherProvider);
 
   void createAccount(
     String name, {

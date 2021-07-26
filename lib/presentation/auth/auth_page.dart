@@ -10,7 +10,7 @@ class AuthSwitch extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isSingIn = ref.watch(
-      authNotifierProvider.select((value) => value.userAuth.isSignIn),
+      authDispatcherProvider.select((value) => value.userAuth.isSignIn),
     );
 
     if (isSingIn) {
@@ -79,7 +79,9 @@ class _AuthPageState extends State<AuthPage> {
                       controller: _emailController,
                       decoration: InputDecoration(hintText: "E-mail"),
                     ),
-                    Padding(padding: EdgeInsets.only(bottom: 8)),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8),
+                    ),
                     TextField(
                       controller: _passwordController,
                       decoration: InputDecoration(hintText: "Password"),

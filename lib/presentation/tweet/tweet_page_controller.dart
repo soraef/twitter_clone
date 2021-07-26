@@ -12,8 +12,8 @@ class TweetPageController extends ChangeNotifier {
 
   final Reader _read;
 
-  TweetNotifier get _tweetNotifier => _read(tweetNotifierProvider);
-  AuthNotifier get _authNotifier => _read(authNotifierProvider);
+  TweetDispatcher get _tweetNotifier => _read(tweetDispatcherProvider);
+  AuthDispatcher get _authNotifier => _read(authDispatcherProvider);
 
   void tweet(String text) {
     final user = _authNotifier.userAuth;

@@ -9,12 +9,12 @@ import 'package:twitter_clone/infrastructure/tweet/tweet_repository.dart';
 
 import 'model/tweets.dart';
 
-final tweetNotifierProvider = ChangeNotifierProvider(
-  (ref) => TweetNotifier(ref.read),
+final tweetDispatcherProvider = ChangeNotifierProvider(
+  (ref) => TweetDispatcher(ref.read),
 );
 
-class TweetNotifier extends ChangeNotifier {
-  TweetNotifier(this._read) {
+class TweetDispatcher extends ChangeNotifier {
+  TweetDispatcher(this._read) {
     tweets = Tweets.empty();
   }
 

@@ -9,7 +9,7 @@ class AccountSwitch extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = ref.watch(
-      accountNotifierProvider.select((value) => value.account),
+      accountDispatcherProvider.select((value) => value.account),
     );
     if (account != null) {
       return Scaffold(

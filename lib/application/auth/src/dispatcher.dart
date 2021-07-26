@@ -6,14 +6,14 @@ import 'package:twitter_clone/application/auth/auth.dart';
 import 'package:twitter_clone/application/core/exception/app_exception.dart';
 import 'package:twitter_clone/infrastructure/auth/firebase_auth_adapter.dart';
 
-final authNotifierProvider = ChangeNotifierProvider(
-  (ref) => AuthNotifier(
+final authDispatcherProvider = ChangeNotifierProvider(
+  (ref) => AuthDispatcher(
     ref.read,
   ),
 );
 
-class AuthNotifier extends ChangeNotifier {
-  AuthNotifier(this._read) {
+class AuthDispatcher extends ChangeNotifier {
+  AuthDispatcher(this._read) {
     userAuth = UserAuth.none();
     authSubscription = auth.onChangeUserAuth().listen((eventUserAuth) {
       userAuth = eventUserAuth;

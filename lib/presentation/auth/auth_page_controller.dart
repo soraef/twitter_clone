@@ -19,7 +19,7 @@ class AuthPageController extends ChangeNotifier {
 
   final Reader _read;
 
-  AuthNotifier get _notifier => _read(authNotifierProvider);
+  AuthDispatcher get _notifier => _read(authDispatcherProvider);
 
   void signIn(String email, String password) async {
     final exception = await _notifier.signIn(email, password);

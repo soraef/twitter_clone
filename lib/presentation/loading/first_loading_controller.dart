@@ -31,8 +31,8 @@ class FirstLoadingController extends ChangeNotifier {
 
   final Reader read;
 
-  AccountNotifier get _accountNotifier => read(accountNotifierProvider);
-  AuthNotifier get _authNotifier => read(authNotifierProvider);
+  AccountDispatcher get _accountNotifier => read(accountDispatcherProvider);
+  AuthDispatcher get _authNotifier => read(authDispatcherProvider);
 
   void loadStart() async {
     state = FirstLoadingState.loading;

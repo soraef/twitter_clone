@@ -1,2 +1,2 @@
-export 'src/notifier.dart';
+export 'src/dispatcher.dart';
 export 'src/model/account.dart';
