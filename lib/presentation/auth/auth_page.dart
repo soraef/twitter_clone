@@ -1,25 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
-import 'package:twitter_clone/presentation/account/account_switch.dart';
 import 'package:twitter_clone/presentation/auth/auth_page_controller.dart';
-
-class AuthSwitch extends ConsumerWidget {
-  const AuthSwitch({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isSingIn = ref.watch(
-      authDispatcherProvider.select((value) => value.userAuth.isSignIn),
-    );
-
-    if (isSingIn) {
-      return AccountSwitch();
-    } else {
-      return AuthPage();
-    }
-  }
-}
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);

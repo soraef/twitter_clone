@@ -1,7 +1,6 @@
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
 import 'package:twitter_clone/application/core/event/event_bus_provider.dart';
 import 'package:twitter_clone/application/tweet/src/event.dart';
 import 'package:twitter_clone/application/tweet/src/model/tweet.dart';
