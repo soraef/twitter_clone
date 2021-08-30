@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:twitter_clone/application/tweet/tweet.dart';
-import 'package:twitter_clone/application/user/user.dart';
+import 'package:twitter_clone/domain/tweet/tweet.dart';
+import 'package:twitter_clone/domain/user/user.dart';
 
 part 'timeline_state.freezed.dart';
 

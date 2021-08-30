@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
+import 'package:twitter_clone/application/auth/dispatcher.dart';
 import 'package:twitter_clone/application/core/exception/app_exception.dart';
+import 'package:twitter_clone/domain/auth/auth.dart';
 import 'package:twitter_clone/infrastructure/account/account_repository.dart';
 
-import 'model/account.dart';
+import '../../domain/account/src/account.dart';
 
 final accountDispatcherProvider = ChangeNotifierProvider<AccountDispatcher>(
   (ref) => AccountDispatcher(ref.read),

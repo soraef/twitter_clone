@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
 import 'package:twitter_clone/application/core/exception/app_exception.dart';
+import 'package:twitter_clone/domain/auth/auth.dart';
 import 'package:twitter_clone/infrastructure/auth/firebase_auth_adapter.dart';
 
 final authDispatcherProvider = ChangeNotifierProvider(

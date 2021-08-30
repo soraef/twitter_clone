@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
-import 'package:twitter_clone/application/tweet/tweet.dart';
+import 'package:twitter_clone/application/auth/dispatcher.dart';
+import 'package:twitter_clone/application/tweet/dispatcher.dart';
 
 final tweetPageController = ChangeNotifierProvider(
   (ref) => TweetPageController(ref.read),

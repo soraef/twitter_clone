@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
+import 'package:twitter_clone/application/auth/dispatcher.dart';
 import 'package:twitter_clone/presentation/auth/auth_page_state.dart';
 
 final authPageControllerProvider = ChangeNotifierProvider(

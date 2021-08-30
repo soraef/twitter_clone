@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/tweet/src/model/tweet.dart';
+import 'package:twitter_clone/domain/tweet/tweet.dart';
 
 final tweetRepositoryProvider = Provider((ref) => TweetRepository());
 

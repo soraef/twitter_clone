@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/src/model/user_auth.dart';
 import 'package:twitter_clone/application/core/exception/app_exception.dart';
 import 'package:twitter_clone/application/core/result/result.dart';
+import 'package:twitter_clone/domain/auth/auth.dart';
 
 final authAdapterProvider = Provider((ref) => FirebaseAuthAdapter());
 

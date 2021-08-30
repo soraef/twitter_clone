@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:twitter_clone/application/user/src/model/user.dart';
+import 'package:twitter_clone/domain/user/src/user.dart';
 
 class Users extends Equatable {
   final Map<String, User> _items;

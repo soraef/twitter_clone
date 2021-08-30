@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:twitter_clone/application/auth/auth.dart';
-import 'package:twitter_clone/application/tweet/tweet.dart';
+import 'package:twitter_clone/application/auth/dispatcher.dart';
+import 'package:twitter_clone/application/tweet/dispatcher.dart';
 import 'package:twitter_clone/presentation/timeline/timeline.dart';
 import 'package:twitter_clone/presentation/tweet/tweet_page.dart';
 

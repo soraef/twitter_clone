@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'model/tweet.dart';
+import 'package:twitter_clone/domain/tweet/tweet.dart';
 
 part 'event.freezed.dart';
 

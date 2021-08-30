@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/tweet/tweet.dart';
-import 'package:twitter_clone/application/user/user.dart';
+import 'package:twitter_clone/application/tweet/dispatcher.dart';
+import 'package:twitter_clone/application/user/dispatcher.dart';
 import 'package:twitter_clone/presentation/timeline/timeline_state.dart';
 
 /// アプリケーション層の[Users]と[Tweets]からTimeLineに表示するべき[TimeLineItemState]を合成

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/application/tweet/tweet.dart';
-import 'package:twitter_clone/application/user/user.dart';
+import 'package:twitter_clone/domain/tweet/tweet.dart';
+import 'package:twitter_clone/domain/user/user.dart';
 
 class TimeLineItem extends StatelessWidget {
   const TimeLineItem({
