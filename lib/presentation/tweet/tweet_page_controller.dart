@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/dispatcher.dart';
-import 'package:twitter_clone/application/tweet/dispatcher.dart';
+import 'package:twitter_clone/application/auth/auth_store.dart';
+import 'package:twitter_clone/application/tweet/tweet_store.dart';
 
 final tweetPageController = ChangeNotifierProvider(
   (ref) => TweetPageController(ref.read),
@@ -12,13 +12,12 @@ class TweetPageController extends ChangeNotifier {
 
   final Reader _read;
 
-  TweetDispatcher get _tweetNotifier => _read(tweetDispatcherProvider);
-  AuthDispatcher get _authNotifier => _read(authDispatcherProvider);
+  TweetStore get _tweetStore => _read(tweetStoreProvider.notifier);
 
   void tweet(String text) {
-    final user = _authNotifier.userAuth;
+    final user = _read(authStoreProvider);
     if (user.isSignIn) {
-      _tweetNotifier.tweet(user.uid!, text);
+      _tweetStore.tweet(user.uid!, text);
     }
   }
 }

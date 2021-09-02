@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/account/dispatcher.dart';
+import 'package:twitter_clone/application/account/account_store.dart';
 
 final accountRegistControllerProvider = ChangeNotifierProvider(
   (ref) => AccountRegistController(ref.read),
@@ -17,13 +17,13 @@ class AccountRegistController extends ChangeNotifier {
 
   final Reader _read;
 
-  AccountDispatcher get _notifier => _read(accountDispatcherProvider);
+  AccountStore get _accountStore => _read(accountStoreProvider.notifier);
 
   void createAccount(
     String name, {
     String? profile,
   }) async {
-    final exception = await _notifier.saveAccount(
+    final exception = await _accountStore.saveAccount(
       name,
       profile: profile,
     );

@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/tweet/dispatcher.dart';
-import 'package:twitter_clone/application/user/dispatcher.dart';
+import 'package:twitter_clone/application/tweet/tweet_store.dart';
+import 'package:twitter_clone/application/user/user_store.dart';
 import 'package:twitter_clone/presentation/timeline/timeline_state.dart';
 
 /// アプリケーション層の[Users]と[Tweets]からTimeLineに表示するべき[TimeLineItemState]を合成
 final loadedTweetProvider = Provider<List<TimeLineItemState>>((ref) {
-  final users = ref.watch(userDispatcherProvider).users;
-  final tweets = ref.watch(tweetDispatcherProvider).tweets;
+  final users = ref.watch(userStoreProvider);
+  final tweets = ref.watch(tweetStoreProvider);
 
   return tweets.values
       .where((tweet) => users.exist(tweet.userId))

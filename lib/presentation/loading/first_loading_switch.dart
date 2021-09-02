@@ -10,9 +10,7 @@ class FirstLoadingSwitch extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(firstLoadingControllerProvider.select(
-      (value) => value.state,
-    ));
+    final state = ref.watch(firstLoadingControllerProvider);
     switch (state) {
       case FirstLoadingState.loading:
         return Container();

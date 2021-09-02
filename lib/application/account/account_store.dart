@@ -1,28 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/dispatcher.dart';
+import 'package:twitter_clone/application/auth/auth_store.dart';
 import 'package:twitter_clone/application/core/exception/app_exception.dart';
 import 'package:twitter_clone/domain/auth/auth.dart';
 import 'package:twitter_clone/infrastructure/account/account_repository.dart';
 
 import '../../domain/account/src/account.dart';
 
-final accountDispatcherProvider = ChangeNotifierProvider<AccountDispatcher>(
-  (ref) => AccountDispatcher(ref.read),
+final accountStoreProvider = StateNotifierProvider<AccountStore, Account?>(
+  (ref) => AccountStore(ref.read),
 );
 
 /// [Account]は自分自身のUserを表すクラスで、プライベートな情報などもAccountに持ちます
 /// 今回は特に[User]クラスとの違いはないですが、後々非公開にしたい情報などを入力することを想定して
 /// [Account]を[User]と区別しています
-class AccountDispatcher extends ChangeNotifier {
-  AccountDispatcher(this._read) {
-    account = null;
-  }
+class AccountStore extends StateNotifier<Account?> {
+  AccountStore(this._read) : super(null);
 
-  /// state
-  late Account? account;
-
-  AuthDispatcher get _authNotifier => _read(authDispatcherProvider);
   AccountRepository get _repository => _read(accountRepositoryProvider);
   final Reader _read;
 
@@ -38,14 +31,14 @@ class AccountDispatcher extends ChangeNotifier {
     }
 
     if (userAuth.isSignIn) {
-      account = Account(
+      final account = Account(
         id: userAuth.uid!,
         name: name,
         profile: profile,
         iconURL: iconURL,
       );
-      await _repository.save(account!);
-      notifyListeners();
+      await _repository.save(account);
+      state = account;
     } else {
       return AppException.notAuthException("サインインされていません");
     }
@@ -54,12 +47,12 @@ class AccountDispatcher extends ChangeNotifier {
   Future<void> loadAccount() async {
     final userAuth = _userAuth();
     if (userAuth.isSignIn) {
-      account = await _repository.fetch(userAuth.uid!);
-      notifyListeners();
+      final account = await _repository.fetch(userAuth.uid!);
+      if (account != null) state = account;
     }
   }
 
   UserAuth _userAuth() {
-    return _authNotifier.userAuth;
+    return _read(authStoreProvider);
   }
 }
