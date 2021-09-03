@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:twitter_clone/application/auth/auth_store.dart';
-import 'package:twitter_clone/application/tweet/tweet_store.dart';
+import 'package:twitter_clone/application/auth/auth_service.dart';
+import 'package:twitter_clone/application/tweet/tweet_service.dart';
 import 'package:twitter_clone/presentation/timeline/timeline.dart';
 import 'package:twitter_clone/presentation/tweet/tweet_page.dart';
 
@@ -16,7 +16,7 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
-    ref.read(tweetStoreProvider.notifier).load();
+    ref.read(tweetServiceProvider).load();
     super.initState();
   }
 
@@ -39,7 +39,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ListTile(
               title: Text("サインアウト"),
               onTap: () {
-                ref.read(authStoreProvider.notifier).signOut();
+                ref.read(authServiceProvider).signOut();
               },
             )
           ],

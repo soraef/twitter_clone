@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/application/account/account_service.dart';
 import 'package:twitter_clone/application/account/account_store.dart';
 import 'package:twitter_clone/application/auth/auth_store.dart';
 
@@ -22,7 +23,7 @@ class FirstLoadingController extends StateNotifier<FirstLoadingState> {
     _authSubscription = _authStore.stream.listen((auth) async {
       if (auth.isSignIn) {
         state = FirstLoadingState.loading;
-        await _accountStore.loadAccount();
+        await _accountService.loadAccount();
       }
       judge();
     });
@@ -30,12 +31,13 @@ class FirstLoadingController extends StateNotifier<FirstLoadingState> {
 
   final Reader read;
 
+  AccountService get _accountService => read(accountServiceProvider);
   AccountStore get _accountStore => read(accountStoreProvider.notifier);
   AuthStore get _authStore => read(authStoreProvider.notifier);
 
   void loadStart() async {
     state = FirstLoadingState.loading;
-    await _accountStore.loadAccount();
+    await _accountService.loadAccount();
   }
 
   void judge() {

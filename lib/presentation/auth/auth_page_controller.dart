@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/application/auth/auth_store.dart';
+import 'package:twitter_clone/application/auth/auth_service.dart';
 import 'package:twitter_clone/presentation/auth/auth_page_state.dart';
 
 final authPageControllerProvider = ChangeNotifierProvider(
@@ -19,10 +19,10 @@ class AuthPageController extends ChangeNotifier {
 
   final Reader _read;
 
-  AuthStore get _authStore => _read(authStoreProvider.notifier);
+  AuthService get _authService => _read(authServiceProvider);
 
   void signIn(String email, String password) async {
-    final exception = await _authStore.signIn(email, password);
+    final exception = await _authService.signIn(email, password);
     if (exception != null) {
       state = AuthPageState.signIn(
         isFailed: true,
@@ -33,7 +33,7 @@ class AuthPageController extends ChangeNotifier {
   }
 
   void signUp(String email, String password) async {
-    final exception = await _authStore.signUp(email, password);
+    final exception = await _authService.signUp(email, password);
     if (exception != null) {
       state = AuthPageState.signUp(
         isFailed: true,

@@ -32,6 +32,13 @@ class Users extends Equatable {
     return Users({..._items, item.id: item});
   }
 
+  Users putAll(List<User> items) {
+    return Users({
+      ..._items,
+      for (final item in items) item.id: item,
+    });
+  }
+
   Users remove(String id) {
     return Users({..._items}..removeWhere((key, value) => key == id));
   }

@@ -20,4 +20,9 @@ class UserRepository {
       return User.fromJson(userData);
     }
   }
+
+  Future<List<User?>> fetchAll(List<String> ids) async {
+    final datas = ids.map((id) => fetch(id)).toList();
+    return Future.wait(datas);
+  }
 }
