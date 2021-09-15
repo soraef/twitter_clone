@@ -21,6 +21,18 @@ class TweetRepository {
     return tweet;
   }
 
+  Future<List<Tweet>> fetchAll(DateTime time) async {
+    final snapshot =
+        await FirebaseFirestore.instance.collection("tweets").get();
+
+    final tweet = snapshot.docs
+        .where((data) => data.exists)
+        .map((data) => Tweet.fromJson(data.data()))
+        .toList();
+
+    return tweet;
+  }
+
   Future<List<Tweet>> loadNewTweet() async {
     return [];
   }

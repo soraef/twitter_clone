@@ -21,7 +21,7 @@ class UserRepository {
     }
   }
 
-  Future<List<User?>> fetchAll(List<String> ids) async {
+  Future<Iterable<User?>> fetchByIds(Iterable<String> ids) async {
     final datas = ids.map((id) => fetch(id)).toList();
     return Future.wait(datas);
   }

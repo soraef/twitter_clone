@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:twitter_clone/domain/user/src/users.dart';
 
 import 'tweet.dart';
 
@@ -38,6 +39,12 @@ class Tweets extends Equatable {
 
   Tweets remove(String id) {
     return Tweets({..._items}..removeWhere((key, value) => key == id));
+  }
+
+  Tweets filterExistUser(Users users) {
+    return Tweets(
+      {..._items}..removeWhere((key, value) => !users.exist(value.userId)),
+    );
   }
 
   @override

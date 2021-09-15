@@ -8,6 +8,7 @@ class Users extends Equatable {
   factory Users.fromIterable(Iterable<User> entities) {
     return Users({for (final entity in entities) entity.id: entity});
   }
+
   factory Users.empty() {
     return Users({});
   }
@@ -32,7 +33,7 @@ class Users extends Equatable {
     return Users({..._items, item.id: item});
   }
 
-  Users putAll(List<User> items) {
+  Users putAll(Iterable<User> items) {
     return Users({
       ..._items,
       for (final item in items) item.id: item,

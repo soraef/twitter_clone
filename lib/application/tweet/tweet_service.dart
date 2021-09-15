@@ -16,18 +16,17 @@ class TweetServcie {
 
   final Reader _read;
 
-  TweetRepository get tweetRepository => _read(tweetRepositoryProvider);
+  TweetRepository get _tweetRepository => _read(tweetRepositoryProvider);
   UserRepository get _userRepository => _read(userRepositoryProvider);
   TweetStore get _tweetStore => _read(tweetStoreProvider.notifier);
   UserStore get _userStore => _read(userStoreProvider.notifier);
 
   void load() async {
     final tweetList =
-        await tweetRepository.fetchOrderByCreatedAt(currentLoadDate);
-
-    final userIds = tweetList.map((tweet) => tweet.userId).toList();
+        await _tweetRepository.fetchOrderByCreatedAt(currentLoadDate);
+    final userIds = tweetList.map((tweet) => tweet.userId).toSet();
     final fetchedUsers =
-        (await _userRepository.fetchAll(userIds)).whereType<User>().toList();
+        (await _userRepository.fetchByIds(userIds)).whereType<User>();
 
     _userStore.effect((users) => users.putAll(fetchedUsers));
     _tweetStore.effect((tweets) => tweets.putAll(tweetList));
@@ -35,7 +34,7 @@ class TweetServcie {
 
   Future<void> tweet(String userId, String text) async {
     final tweet = Tweet.create(userId, text);
-    await tweetRepository.save(tweet);
+    await _tweetRepository.save(tweet);
     _tweetStore.effect((tweets) => tweets.put(tweet));
   }
 }
