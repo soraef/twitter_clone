@@ -17,7 +17,7 @@ class FirstLoadingController extends StateNotifier<FirstLoadingState> {
   late StreamSubscription _authSubscription;
   FirstLoadingController(this.read) : super(FirstLoadingState.loading) {
     _accountSubscription = _accountStore.stream.listen((account) {
-      judge();
+      _updateState();
     });
 
     _authSubscription = _authStore.stream.listen((auth) async {
@@ -25,7 +25,7 @@ class FirstLoadingController extends StateNotifier<FirstLoadingState> {
         state = FirstLoadingState.loading;
         await _accountService.loadAccount();
       }
-      judge();
+      _updateState();
     });
   }
 
@@ -40,7 +40,7 @@ class FirstLoadingController extends StateNotifier<FirstLoadingState> {
     await _accountService.loadAccount();
   }
 
-  void judge() {
+  void _updateState() {
     print("judge");
     final _userAuth = read(authStoreProvider);
     final _account = read(accountStoreProvider);
