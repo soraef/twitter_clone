@@ -16,7 +16,6 @@ class AuthPageController extends ChangeNotifier {
 
   /// state
   late AuthPageState state;
-
   final Reader _read;
 
   AuthService get _authService => _read(authServiceProvider);

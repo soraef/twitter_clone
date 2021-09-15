@@ -15,6 +15,7 @@ final firstLoadingControllerProvider =
 class FirstLoadingController extends StateNotifier<FirstLoadingState> {
   late StreamSubscription _accountSubscription;
   late StreamSubscription _authSubscription;
+
   FirstLoadingController(this.read) : super(FirstLoadingState.loading) {
     _accountSubscription = _accountStore.stream.listen((account) {
       _updateState();

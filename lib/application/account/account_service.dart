@@ -36,10 +36,7 @@ class AccountService {
         iconURL: iconURL,
       );
       await _repository.save(account);
-      _store.effect((_) => account);
-      _userStore.effect(
-        (users) => users.put(account.toUser()),
-      );
+      _registAccount(account);
     } else {
       return AppException.notAuthException("サインインされていません");
     }
@@ -49,8 +46,13 @@ class AccountService {
     final userAuth = _userAuth();
     if (userAuth.isSignIn) {
       final account = await _repository.fetch(userAuth.uid!);
-      if (account != null) _store.effect((prev) => account);
+      if (account != null) _registAccount(account);
     }
+  }
+
+  void _registAccount(Account account) {
+    _store.effect((_) => account);
+    _userStore.effect((users) => users.put(account.toUser()));
   }
 
   UserAuth _userAuth() {
